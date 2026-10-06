@@ -32,10 +32,13 @@ async function getGames(search = "") {
 }
 
 function displayGames(games) {
-    gamesContainer.innerHTML = "";
+    gamesContainer.innerHTML = '';
 
     games.forEach((game) => {
-        gamesContainer.innerHTML += (Modal(game.name, game.background_image, game.genres, game.rating, game.released));
+        let gameCard = document.createElement('div');
+        gameCard.id = `${game.id}`
+        gameCard.innerHTML = Modal(game.name, game.background_image, game.genres, game.rating, game.released)
+        gamesContainer.append(gameCard);
     });
 }
 
