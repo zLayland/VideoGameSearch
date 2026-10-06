@@ -1,0 +1,74 @@
+.games{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.gameCard {
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 300px;
+    height: 400px;
+
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr 1fr;
+    place-items: center;
+    align-content: center;
+
+    padding-top: 5px;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.gameImage {
+    border: 1px solid black;
+    width: 95%;
+    height: 180px;
+
+    object-fit: cover;
+
+    border-radius: 5px;
+    margin: 1px;
+}
+
+.gameName {
+    margin: 1px;
+    text-align: center;
+}
+
+.genres {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 1px;
+
+    margin: 1px;
+
+    overflow: hidden;
+}
+
+.gameInfo {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+
+    margin: 1px;
+}
+
+.gameRating,
+.gameDate,
+.genre {
+    text-align: center;
+    margin: 1px;
+}
