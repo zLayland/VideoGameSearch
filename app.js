@@ -44,7 +44,7 @@ async function getGame(id) {
         const data = await response.json();
 
         console.log(data.name, data.background_image, data.genres, data.rating, data.released, data.description, data.platforms, data.developers, data.esrb_rating);
-        // Popup(data.name, data.background_image, data.genres, data.rating, data.released, data.description, data.platforms, data.developers, data.esrb_rating);
+        Popup(data.name, data.background_image, data.genres, data.rating, data.released, data.description, data.platforms, data.developers, data.esrb_rating);
     }
     catch (error) {
         console.error("Failed: ", error);
