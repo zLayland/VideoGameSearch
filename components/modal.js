@@ -1,4 +1,4 @@
-export function Modal(name, img, genres, rating, releaseDate){
+export function Modal(name, img, genres, rating, release_date){
     let modalHTML = '';
     modalHTML += `<div class='gameCard'>`;
         modalHTML += `<img src='${img}' class='gameImage' alt='${name}'>`;
@@ -10,7 +10,7 @@ export function Modal(name, img, genres, rating, releaseDate){
         modalHTML += `</div>`
         modalHTML += `<div class='gameInfo'>`
             modalHTML += `<p class='gameRating'>★${rating}</p>`;
-            modalHTML += `<p class='gameDate'>🗓${releaseDate}</p>`;
+            modalHTML += `<p class='gameDate'>🗓${release_date}</p>`;
         modalHTML += `</div>`
     modalHTML += `</div>`;
 
