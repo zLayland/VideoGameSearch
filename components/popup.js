@@ -1,4 +1,4 @@
-export function Popup(name, img, genres, rating, release_date, description, platforms, developers, esrb){
+export function Popup(name = "", img, genres = [], rating, release_date = "", description = "", platforms = [], developers = [], esrb = ""){
     const popupContainer = document.getElementById("popup");
     popupContainer.style.display = "flex";
 
@@ -24,7 +24,7 @@ export function Popup(name, img, genres, rating, release_date, description, plat
                     popupHTML += `<p class='genre'>${genre.name}</p>`;
                 }
             popupHTML += `</section>`;
-                popupHTML += `<p class='esrb'>${esrb.name}</p>`;
+                popupHTML += `<p class='esrb'>${esrb?.name ?? "Not Rated"}</p>`;
             popupHTML += `</div>`;
         popupHTML += `</section>`
         popupHTML += `<section class='popup-right'>`

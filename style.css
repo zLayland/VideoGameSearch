@@ -1,3 +1,7 @@
+body {
+    font-family: "Inter", Arial, sans-serif;
+}
+
 .games {
     display: flex;
     flex-wrap: wrap;
@@ -206,4 +210,32 @@
     background-color: white;
 
     cursor: pointer;
+}
+
+/*genre card*/
+.genreCard{
+    width: 400px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 100% 100%;
+}
+
+.genreName{
+    text-align: center;
+    font-size: 70px;
+    -webkit-text-stroke: 3px black;
+    color: white;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(2px);
+    align-content: center;
+    border-radius: 10px;
+}
+
+.genreCount{
+    text-align: center;
 }
