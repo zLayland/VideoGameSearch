@@ -3,23 +3,23 @@ export function Popup(name = "", img, genres = [], rating, release_date = "", de
     popupContainer.style.display = "flex";
 
     let popupHTML = '';
-    popupHTML += `<div class="popupWindow">`;
+    popupHTML += `<div class="popup-window">`;
         popupHTML += `<section class='popup-left'>`
-            popupHTML += `<img src='${img}' class='popupImage' alt='${name}'>`;
-            popupHTML += `<div class='popupGameInfo'>`;
-                popupHTML += `<p class='gameRating'>★${rating}</p>`;
-                popupHTML += `<p class='gameDate'>🗓${release_date}</p>`;
+            popupHTML += `<img src='${img}' class='popup-image' alt='${name}'>`;
+            popupHTML += `<div class='popup-game-info'>`;
+                popupHTML += `<p class='game-rating'>★${rating}</p>`;
+                popupHTML += `<p class='game-date'>🗓${release_date}</p>`;
                 popupHTML += `<section class='platforms'>`;
                     for (let platform of platforms){
-                        popupHTML += `<p class='popupPlatform'>${platform.platform.name}</p>`;
+                        popupHTML += `<p class='popup-platform'>${platform.platform.name}</p>`;
                     }
                 popupHTML += `</section>`;
                 popupHTML += `<section class='developers'>`;
                     for (let developer of developers){
-                        popupHTML += `<p class='popupDev'>${developer.name}</p>`;
+                        popupHTML += `<p class='popup-dev'>${developer.name}</p>`;
                     }
                 popupHTML += `</section>`;
-                popupHTML += `<section class='popupGenres'>`;
+                popupHTML += `<section class='popup-genres'>`;
                 for (let genre of genres){
                     popupHTML += `<p class='genre'>${genre.name}</p>`;
                 }
@@ -28,10 +28,10 @@ export function Popup(name = "", img, genres = [], rating, release_date = "", de
             popupHTML += `</div>`;
         popupHTML += `</section>`
         popupHTML += `<section class='popup-right'>`
-            popupHTML += `<h1 class='popupName'>${name}</h1>`;
-            popupHTML += `<section class='popupDescription'>${description}</section>`;
+            popupHTML += `<h1 class='popup-name'>${name}</h1>`;
+            popupHTML += `<section class='popup-description'>${description}</section>`;
         popupHTML += `</section>`
-        popupHTML += `<button class='closePopup' id="close">X</button>`
+        popupHTML += `<button class='close-popup' id="close">X</button>`
     popupHTML += `</div>`;
 
     popupContainer.innerHTML = popupHTML;

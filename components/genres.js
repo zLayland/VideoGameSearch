@@ -1,9 +1,9 @@
 export function GenreCard(name, img, count){
     let genreHTML = '';
-    genreHTML += `<div class='genreCard' style='background-image: url("${img}");'>`;
-        genreHTML += `<h1 class='genreName'>${name}</h1>`;
+    genreHTML += `<div class='genre-card' style='background-image: url("${img}");'>`;
+        genreHTML += `<h1 class='genre-name'>${name}</h1>`;
     genreHTML += `</div>`;
-    genreHTML += `<p class='genreCount'>${count} Games</h1>`;
+    genreHTML += `<p class='genre-count'>${count} Games</h1>`;
 
     return genreHTML
 }

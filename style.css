@@ -14,7 +14,7 @@ body {
 
 /*game card*/
 
-.gameCard {
+.game-card {
     display: grid;
     grid-template-rows: 2fr 1fr 1fr 1fr;
     place-items: center;
@@ -31,7 +31,7 @@ body {
     overflow: hidden;
 }
 
-.gameImage {
+.game-image {
     width: 95%;
     height: 180px;
 
@@ -43,7 +43,7 @@ body {
     object-fit: cover;
 }
 
-.gameName {
+.game-name {
     margin: 1px;
     text-align: center;
 }
@@ -65,7 +65,7 @@ body {
     overflow: hidden;
 }
 
-.gameInfo {
+.game-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
     place-items: center;
@@ -76,11 +76,11 @@ body {
     margin: 1px;
 }
 
-.gameRating,
-.gameDate,
+.game-rating,
+.game-date,
 .genre,
-.popupPlatform,
-.popupDev {
+.popup-platform,
+.popup-dev {
     margin: 1px;
     text-align: center;
 }
@@ -107,7 +107,7 @@ body {
 }
 
 
-.popupWindow {
+.popup-window {
     display: flex;
     justify-content: center;
 
@@ -141,7 +141,7 @@ body {
 /*left side*/
 
 
-.popupImage {
+.popup-image {
     display: block;
 
     max-width: 100%;
@@ -153,7 +153,7 @@ body {
     object-fit: cover;
 }
 
-.popupGameInfo {
+.popup-game-info {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -169,7 +169,7 @@ body {
 
 .platforms,
 .developers,
-.popupGenres,
+.popup-genres,
 .esrb {
     display: flex;
     flex-wrap: wrap;
@@ -188,17 +188,17 @@ body {
     flex-direction: column;
 }
 
-.popupName {
+.popup-name {
     width: 100%;
     height: fit-content;
 }
 
-.popupDescription {
+.popup-description {
     width: 100%;
     max-height: 100%;
 }
 
-.closePopup {
+.close-popup {
     min-width: 25px;
     max-width: 25px;
     min-height: 25px;
@@ -213,7 +213,7 @@ body {
 }
 
 /*genre card*/
-.genreCard{
+.genre-card{
     width: 400px;
     height: 200px;
     margin: 10px;
@@ -224,7 +224,7 @@ body {
     background-size: 100% 100%;
 }
 
-.genreName{
+.genre-name{
     text-align: center;
     font-size: 70px;
     -webkit-text-stroke: 3px black;
@@ -236,6 +236,6 @@ body {
     border-radius: 10px;
 }
 
-.genreCount{
+.genre-count{
     text-align: center;
 }
