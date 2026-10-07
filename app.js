@@ -138,7 +138,7 @@ function displayGenres(genres) {
         genreCard.innerHTML = GenreCard(genre.name, genre.image_background, genre.games_count)
         genreCard.addEventListener("click", () => {
             console.log(`Clicked ${genreCard.id}`);
-            getGames(genre.id)
+            getGames("", genre.id)
         })
 
         gamesContainer.append(genreCard);
