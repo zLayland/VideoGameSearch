@@ -8,6 +8,7 @@ const BASE_URL = "https://api.rawg.io/api";
 const gamesContainer = document.getElementById("games");
 const searchInput = document.getElementById("search");
 const searchBtn = document.getElementById("searchBtn");
+const loadButton = document.getElementById("load-more");
 
 let nextPage = null;
 
@@ -147,6 +148,10 @@ function displayGenres(genres) {
 
 searchBtn.addEventListener("click", () => {
   getGames(searchInput.value.trim());
+});
+
+loadButton.addEventListener("click", () => {
+  loadNextPage();
 });
 
 getGenres();
