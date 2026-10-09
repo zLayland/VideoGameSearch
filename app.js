@@ -52,6 +52,7 @@ function appendGames(games) {
             game.name,
             game.background_image,
             game.genres,
+            game.tags,
             game.rating,
             game.released
         );
