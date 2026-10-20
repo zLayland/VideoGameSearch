@@ -24,7 +24,12 @@ function closePopup() {
 }
 
 function updateLoadMoreVisibility() {
-    loadButton.style.display = currentView === "games" && nextPage ? "block" : "none";
+    if (currentView === "games"){
+        loadButton.style.display = "block";
+    }
+    else {
+        loadButton.style.display = "none";
+    } 
 }
 
 async function fetchGames(search = "", genreId = "", genreName = "") {
@@ -39,6 +44,7 @@ async function fetchGames(search = "", genreId = "", genreName = "") {
     const response = await fetch(url);
     if (!response.ok) throw new Error(`Error: ${response.status}`);
 
+    currentView = "games";
     const data = await response.json();
     nextPage = data.next;
 
@@ -57,7 +63,6 @@ async function fetchGames(search = "", genreId = "", genreName = "") {
 async function showGames(search = "", genreId = "", genreName = "") {
     try {
         await fetchGames(search, genreId, genreName);
-        currentView = "games"
     } catch (error) {
         console.error("Failed:", error);
         gamesContainer.innerHTML = '<p class="status-message">Could not load games.</p>';
