@@ -9,7 +9,6 @@ const gamesContainer = document.getElementById("games");
 const searchInput = document.getElementById("search");
 const searchBtn = document.getElementById("searchBtn");
 const loadButton = document.getElementById("load-more");
-const backButton = document.getElementById("backBtn");
 const genresButton = document.getElementById("genresBtn");
 const browseButton = document.getElementById("browseBtn");
 const homeLink = document.getElementById("homeLink");
@@ -17,12 +16,7 @@ const pageTitle = document.getElementById("pageTitle");
 const popupContainer = document.getElementById("popup");
 
 let nextPage = null;
-let currentView = { type: "genres" };
-let navIndex = 0;
-
-function updateBackButton() {
-    backButton.disabled = navIndex <= 0;
-}
+let currentView = "";
 
 function closePopup() {
     popupContainer.style.display = "none";
@@ -30,20 +24,7 @@ function closePopup() {
 }
 
 function updateLoadMoreVisibility() {
-    loadButton.style.display = currentView.type === "games" && nextPage ? "block" : "none";
-}
-
-function setHistory(view, mode = "push") {
-    currentView = { ...view };
-
-    if (mode === "replace") {
-        history.replaceState({ view: currentView, navIndex }, "", window.location.href);
-    } else if (mode === "push") {
-        navIndex += 1;
-        history.pushState({ view: currentView, navIndex }, "", window.location.href);
-    }
-
-    updateBackButton();
+    loadButton.style.display = currentView === "games" && nextPage ? "block" : "none";
 }
 
 async function fetchGames(search = "", genreId = "", genreName = "") {
@@ -73,11 +54,10 @@ async function fetchGames(search = "", genreId = "", genreName = "") {
     updateLoadMoreVisibility();
 }
 
-async function showGames(search = "", genreId = "", genreName = "", historyMode = "push") {
+async function showGames(search = "", genreId = "", genreName = "") {
     try {
-        const view = { type: "games", search, genreId, genreName };
         await fetchGames(search, genreId, genreName);
-        setHistory(view, historyMode);
+        currentView = "games"
     } catch (error) {
         console.error("Failed:", error);
         gamesContainer.innerHTML = '<p class="status-message">Could not load games.</p>';
@@ -137,6 +117,7 @@ async function getGame(id) {
         if (!response.ok) throw new Error(`Error: ${response.status}`);
 
         const data = await response.json();
+        currentView = "popup"
 
         Popup(
             data.name,
@@ -170,10 +151,10 @@ async function fetchGenres() {
     updateLoadMoreVisibility();
 }
 
-async function showGenres(historyMode = "push") {
+async function showGenres() {
     try {
         await fetchGenres();
-        setHistory({ type: "genres" }, historyMode);
+        currentView = "genres"
     } catch (error) {
         console.error("Failed: ", error);
         gamesContainer.innerHTML = '<p class="status-message">Could not load genres.</p>';
@@ -208,34 +189,6 @@ function displayGenres(genres) {
     });
 }
 
-async function restoreView(view) {
-    currentView = { ...view };
-
-    try {
-        if (view.type === "genres") {
-            await fetchGenres();
-        } else if (view.type === "games") {
-            await fetchGames(view.search || "", view.genreId || "", view.genreName || "");
-        }
-    } catch (error) {
-        console.error("Could not restore previous page:", error);
-        gamesContainer.innerHTML = '<p class="status-message">Could not restore the previous page.</p>';
-    }
-
-    updateBackButton();
-}
-
-function goBack() {
-    if (popupContainer.style.display === "flex") {
-        closePopup();
-        return;
-    }
-
-    if (navIndex > 0) {
-        history.back();
-    }
-}
-
 function searchGames() {
     const search = searchInput.value.trim();
     if (!search) return;
@@ -248,26 +201,9 @@ searchInput.addEventListener("keydown", (event) => {
 });
 
 loadButton.addEventListener("click", loadNextPage);
-backButton.addEventListener("click", goBack);
-genresButton.addEventListener("click", () => {
-    if (currentView.type !== "genres") showGenres();
-});
+genresButton.addEventListener("click", () => showGenres());
 browseButton.addEventListener("click", () => showGames());
-
-homeLink.addEventListener("click", (event) => {
-    event.preventDefault();
-    if (currentView.type !== "genres") showGenres();
-});
-
-window.addEventListener("popstate", async (event) => {
-    closePopup();
-
-    const state = event.state;
-    if (!state?.view) return;
-
-    navIndex = state.navIndex ?? 0;
-    await restoreView(state.view);
-});
+homeLink.addEventListener("click", () => showGenres());
 
 document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && popupContainer.style.display === "flex") {
@@ -276,9 +212,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 async function initializeApp() {
-    navIndex = 0;
     await fetchGenres();
-    setHistory({ type: "genres" }, "replace");
 }
 
 initializeApp();
