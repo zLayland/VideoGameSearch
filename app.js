@@ -153,13 +153,13 @@ async function fetchGenres() {
     nextPage = null;
     pageTitle.textContent = "Game Genres";
     displayGenres(data.results);
+        currentView = "genres"
     updateLoadMoreVisibility();
 }
 
 async function showGenres() {
     try {
         await fetchGenres();
-        currentView = "genres"
     } catch (error) {
         console.error("Failed: ", error);
         gamesContainer.innerHTML = '<p class="status-message">Could not load genres.</p>';
