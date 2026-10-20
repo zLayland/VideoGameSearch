@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css?v=3">
+    <title>Games Database</title>
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="#" id="homeLink">Games Database</a>
+
+        <nav class="main-nav" aria-label="Main navigation">
+            <button id="backBtn" class="nav-btn" type="button" disabled>← Back</button>
+            <button id="genresBtn" class="nav-btn" type="button">Genres</button>
+            <button id="browseBtn" class="nav-btn" type="button">Browse Games</button>
+        </nav>
+
+        <div class="header-search">
+            <input id="search" type="text" placeholder="Search for a game..." />
+            <button id="searchBtn" type="button">Search</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-heading">
+            <div>
+                <p class="eyebrow">Explore</p>
+                <h1 id="pageTitle">Game Genres</h1>
+            </div>
+        </div>
+
+        <div id="games" class="games"></div>
+        <div id="popup" class="popup"></div>
+        <button id="load-more" class="next" type="button">Load More</button>
+    </main>
+
+    <script src="./app.js?v=3" type="module"></script>
+
+    <footer>
+        Game data provided by <a href="https://rawg.io/apidocs" target="_blank" rel="noopener noreferrer">RAWG API</a>
+    </footer>
+</body>
+</html>
