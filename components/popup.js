@@ -35,6 +35,9 @@ export function Popup(name = "", img, genres = [], rating, release_date = "", de
     popupHTML += `</div>`;
 
     popupContainer.innerHTML = popupHTML;
-    close = document.getElementById('close');
-    close.addEventListener("click", () => {popupContainer.style.display = "none";})
+    const closeButton = document.getElementById('close');
+    closeButton.addEventListener("click", () => {
+        popupContainer.style.display = "none";
+        popupContainer.innerHTML = "";
+    });
 }
